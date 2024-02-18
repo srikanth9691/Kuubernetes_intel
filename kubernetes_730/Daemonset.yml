@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ghost-dameon
+  labels:
+    author: intelliqit
+spec:
+  selector:
+    matchLabels:
+      author: intelliqit
+  template:
+    metadata:
+      name: ghost-pod
+      labels:
+        author: intelliqit
+    spec:
+      containers:
+        - name: ghost
+          image: ghost
+          env:
+            - name: NODE_ENV
+              value: development
+...
+
+
+
+

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tomcat-pod
+  labels:
+    author: cherry
+spec:
+  containers:
+    - name: mytomee
+      image: tomcat
+  tolerations:
+    - key: slave1
+      operator: Equal
+      value: cherry1
+      effect: NoSchedule
+
+

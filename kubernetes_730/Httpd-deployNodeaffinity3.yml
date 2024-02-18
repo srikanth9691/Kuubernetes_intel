@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deployment
+  labels:
+    author: cherry
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      author: cherry
+  template:
+    metadata:
+      name: httpd-pod
+      labels:
+        author: cherry
+    spec:
+      containers:
+        - name: myhttpd
+          image: httpd
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: slave1
+                    operator: In
+                    values:
+                      - cherry1
